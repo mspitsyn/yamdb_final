@@ -9,15 +9,14 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
 from reviews.models import Category, Genre, Review, Title, User
 
-from api.serializers import (CategorySerializer, CommentSerializer,
-                             GenreSerializer, ReadOnlyTitleSerializer,
-                             ReviewSerializer, TitleSerializer,
-                             TokenSerializer, UserEditSerializer,
-                             UserSerializer, UserSignUpSerializer)
-
 from .filters import TitleFilter
 from .mixins import ListCreateDestroyViewSet
 from .permissions import IsAdmin, IsAdminModeratorAuthorOrReadOnly, ReadOnly
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, ReadOnlyTitleSerializer,
+                          ReviewSerializer, TitleSerializer, TokenSerializer,
+                          UserEditSerializer, UserSerializer,
+                          UserSignUpSerializer)
 
 
 class UserViewSet(viewsets.ModelViewSet):
