@@ -1,6 +1,4 @@
 asgiref==3.2.10
-coreapi==2.3.3
-coreschema==0.0.4
 Django==2.2.16
 django-filter==2.4.0
 djangorestframework==3.12.4
