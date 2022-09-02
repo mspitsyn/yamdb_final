@@ -64,34 +64,34 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```
 Проверьте корректность установки Docker-compose:
 ```
-sudo  docker-compose --version
+sudo docker-compose --version
 ```
 
 ### После успешного деплоя:
 Соберите статические файлы (статику):
 ```
-docker-compose exec web python manage.py collectstatic --no-input
+sudo docker-compose exec web python manage.py collectstatic --no-input
 ```
 Примените миграции:
 ```
-docker-compose exec web python manage.py makemigrations
-docker-compose exec web python manage.py migrate --noinput
+sudo docker-compose exec web python manage.py makemigrations
+sudo docker-compose exec web python manage.py migrate --noinput
 ```
 Создайте суперпользователя:
 ```
-docker-compose exec web python manage.py createsuperuser
+sudo docker-compose exec web python manage.py createsuperuser
 ```
 или
 ```
-docker-compose exec web python manage.py loaddata fixtures.json
+sudo docker-compose exec web python manage.py loaddata fixtures.json
 ```
 
 
 ### Проверьте работоспособность приложения:
-зайдите на http://localhost/admin/ и убедитесь, что страница отображается полностью: статика подгрузилась.
+зайдите на http://<ip-адрес>/admin/ и убедитесь, что страница отображается полностью: статика подгрузилась.
 
 ### Как пользоваться ресурсом
-После запуска правила пользования доступны по адресу http://localhost/redoc/.
+После запуска правила пользования доступны по адресу http://<ip-адрес>/redoc/.
 
 ---
 
