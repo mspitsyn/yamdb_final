@@ -12,6 +12,12 @@
 * deploy - Автоматический деплой проекта на боевой сервер
 * send_message - Отправка уведомления в Telegram о том, что процесс деплоя успешно завершился.
 
+---
+## Развёрнутый проект:
+http://84.201.129.171/api/v1/
+http://84.201.129.171/admin/
+
+---
 ### Подготовка для запуска workflow
 Создайте и активируйте виртуальное окружение, обновите pip:
 ```
@@ -102,6 +108,115 @@ sudo docker-compose exec web python manage.py loaddata fixtures.json
 После запуска правила пользования доступны по адресу http://<ip-адрес>/redoc/.
 
 ---
+## Примеры запросов к некоторым API:
 
+#### Регистрация нового пользователя
+**POST   /api/v1/auth/signup/**
+
+Request запрос должен быть сформирован по следующему шаблону:
+```json
+{
+  "email": "string",
+  "username": "string"
+}
+```
+Response:
+```json
+{
+  "email": "string",
+  "username": "string"
+}
+```
+
+#### Получение списка всех произведений / Добавление произведения 
+**GET  /api/v1/titles/**
+
+Response на GET запрос:
+```json
+[
+  {
+    "count": 0,
+    "next": "string",
+    "previous": "string",
+    "results": [
+      {
+        "id": 0,
+        "name": "string",
+        "year": 0,
+        "rating": 0,
+        "description": "string",
+        "genre": [
+          {
+            "name": "string",
+            "slug": "string"
+          }
+        ],
+        "category": {
+          "name": "string",
+          "slug": "string"
+        }
+      }
+    ]
+  }
+]
+```  
+**POST  /api/v1/titles/** <br />
+Request:
+```json
+{
+  "name": "string",
+  "year": 0,
+  "description": "string",
+  "genre": [
+    "string"
+  ],
+  "category": "string"
+}
+```
+Response 201:
+```json
+{
+  "id": 0,
+  "name": "string",
+  "year": 0,
+  "rating": 0,
+  "description": "string",
+  "genre": [
+    {
+      "name": "string",
+      "slug": "string"
+    }
+  ],
+  "category": {
+    "name": "string",
+    "slug": "string"
+  }
+}
+```
+
+#### Получение информации о произведении
+**GET /api/v1/titles/{titles_id}/** <br />
+Response:
+```json
+{
+  "id": 0,
+  "name": "string",
+  "year": 0,
+  "rating": 0,
+  "description": "string",
+  "genre": [
+    {
+      "name": "string",
+      "slug": "string"
+    }
+  ],
+  "category": {
+    "name": "string",
+    "slug": "string"
+  }
+}
+```
+
+---
 ### Автор
 [Спицын Максим](https://github.com/mspitsyn) 
